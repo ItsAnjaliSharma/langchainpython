@@ -1,2 +1,2 @@
-# langchainphython
+# langchainpython
 Large Language Models
