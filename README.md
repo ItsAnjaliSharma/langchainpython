@@ -27,5 +27,16 @@ python -m venv env
 - When we used model in this we used hugging face access token
 
 - to install all requirement.txt file run
-```bash  pip install -r requirements.txt```bash  
+```bash  
+pip install -r requirements.txt
+```  
 
+- To Create django Project start 
+```bash
+django-admin startproject
+```
+
+- to start django app
+```bash
+python manage.py startapp chef 
+```
