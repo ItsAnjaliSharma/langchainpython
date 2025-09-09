@@ -9,7 +9,10 @@ Large Language Models
 - OR
 
 - You can create virtual env by run 
-```bash  virtualenv env```  
+```bash 
+ virtualenv env
+ ```  
+
  the name of env at the last which are our virtual env or you can run
 ```bash    
 python -m venv env

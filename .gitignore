@@ -3,7 +3,3 @@
 env
 env/
 venv
-venv/
-config.py
-data.db
-*.log
