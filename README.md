@@ -18,8 +18,10 @@ Large Language Models
 python -m venv env
 ```
 - to activate env 
-  ```bash  
-  env\scripts\activate```
+  ```
+  bash  
+  env\scripts\activate
+  ```
   or ```bash  env\bin\activate```    or 
   ```bash  venv\Scripts\activate.bat(for windows)```
 
