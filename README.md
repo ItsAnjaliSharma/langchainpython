@@ -24,6 +24,15 @@ python -m venv env
   ```
   or ```bash  env\bin\activate```    or 
   ```bash  venv\Scripts\activate.bat(for windows)```
+  ```bash  
+  env\scripts\activate```
+  or 
+  ```bash
+    env\bin\activate```
+        or 
+  ```bash 
+   venv\Scripts\activate.bat(for windows)
+   ```
 
 
 - pip freeze to check which package are installed
