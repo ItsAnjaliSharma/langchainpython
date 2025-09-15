@@ -41,6 +41,9 @@ python -m venv env
 - When we used model in this we used hugging face access token
 
 - to install all requirement.txt file run
+```bash
+pip freeze > requirements.txt
+```
 ```bash  
 pip install -r requirements.txt
 ```  
