@@ -1,17 +1,6 @@
 from decouple import config
-import google.generativeai as genai
+from langchain_community.embeddings import HuggingFaceBgeEmbeddings
 
-# get the key from .env
-secret_gemini_key = config("secret_gemini_key")
-
-# configure Gemini
-genai.configure(api_key=secret_gemini_key)
-
-model = "models/embedding-001"
-
-result = genai.embed_content(
-    model=model,
-    content="this is a text to be embedded"
-)
-
+emb_model = HuggingFaceBgeEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+result = emb_model.embed_query("Hello world")
 print(result)
