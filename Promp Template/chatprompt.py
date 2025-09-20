@@ -28,7 +28,7 @@ chat = ChatGoogleGenerativeAI(
 # formattedChatPrompt= chatPrompt.format_messages(
 #     input_language="English",
 #     output_language="Korean",
-#     text="Anjali"
+#     text="Anjali Sharma is a software developer"
 # )
 
 # print("Formatted Chat Prompt: ", formattedChatPrompt)
@@ -52,7 +52,7 @@ chat = ChatGoogleGenerativeAI(
 # formattedChatPrompt= chatPrompt.format_messages(
 #     input_language="English",
 #     output_language="Hindi",
-#     text="I am an software developer"
+#     text="I am a software developer"
 # )
 
 # print("Formatted Chat Prompt is: ", formattedChatPrompt)
@@ -69,28 +69,28 @@ chat = ChatGoogleGenerativeAI(
 
 # print(systemPrompt)
 
-systemPrompt= PromptTemplate.from_template(
-    "You are a helpful assistant that translates {input_language} to {output_language}."
-)
+# systemPrompt= PromptTemplate.from_template(
+#     "You are a helpful assistant that translates {input_language} to {output_language}."
+# )
 
-humanPrompt=PromptTemplate.from_template("{text}")
-SystemMessagePrompt= SystemMessagePromptTemplate(prompt=systemPrompt)
-HumanMessagePrompt=HumanMessagePromptTemplate(prompt=humanPrompt)
+# humanPrompt=PromptTemplate.from_template("{text}")
+# SystemMessagePrompt= SystemMessagePromptTemplate(prompt=systemPrompt)
+# HumanMessagePrompt=HumanMessagePromptTemplate(prompt=humanPrompt)
 
 
-chatPrompt=ChatPromptTemplate.from_messages([
-    SystemMessagePrompt,HumanMessagePrompt
-])
+# chatPrompt=ChatPromptTemplate.from_messages([
+#     SystemMessagePrompt,HumanMessagePrompt
+# ])
 
 # print("Chat Prompt:", chatPrompt)
 
-formattedChatPrompt= chatPrompt.format_messages(
-    input_language="English",
-    output_language="French",
-    text="I love Music"
-)
+# formattedChatPrompt= chatPrompt.format_messages(
+#     input_language="English",
+#     output_language="French",
+#     text="I love Music and singing"
+# )
 
-print("Formatted Chat Prompt:", formattedChatPrompt)
-response= chat.invoke(formattedChatPrompt)
-print("Response: ", response)
-print("Response Content:", response.content)
+# print("Formatted Chat Prompt:", formattedChatPrompt)
+# response= chat.invoke(formattedChatPrompt)
+# print("Response: ", response)
+# print("Response Content:", response.content)
