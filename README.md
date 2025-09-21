@@ -28,7 +28,8 @@ python -m venv env
   env\scripts\activate```
   or 
   ```bash
-    env\bin\activate```
+    env\bin\activate
+    ```
         or 
   ```bash 
    venv\Scripts\activate.bat(for windows)
