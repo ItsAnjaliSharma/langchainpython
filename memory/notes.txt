@@ -1,0 +1,24 @@
+Memory in langchain its mean store past conversations and interactions 
+You Can use it with chains also the memory 
+
+Chat Message We Have Chat Message Class One of the core utility classes underprinting most memory modules 
+ChatMessageHistory class Lightweighted wrapper that provide conveinence method of saving human message and ai message and then fetching them all.
+
+
+Conversational Buffer Memory:
+
+This notebook shows how to use ConversationBufferMemory. This memory allows for storing messgaes and then extracts the message in a variable.
+
+
+Conversational Buffer Window Memory:
+
+keeps a list of interactions of the conversation over time. It only uses the last K interactions. This can be useful for keeping a sliding Window of most recent interactions, so buffer does not get too large
+
+
+Entity
+
+Entity Memory Remembers given facts about specific entities in a conversation. It extracts information on entities (Using LLms) and build up its knowledge about that Entity over time(also Using an LLM)
+
+Conversation Summary Buffer
+
+It keeps a buffer of recent interactions in memory. but rather than just completely flushing old interactions it complies them into an Summary and uses both. its uses token length rather than number of interactions to determine when to flush interactions
