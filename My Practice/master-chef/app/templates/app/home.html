@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef Master</title>
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Ask Your Recipe - AI Master Chef</h1>
+        <p class="subtitle">Type your ingredients or dish idea and let AI Chef guide you 🍳</p>
+
+        <form method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.recipe_message }}
+            </div>
+            <button class="btn" type="submit">Ask</button>
+        </form>
+
+        {% if ai_recipe %}
+        <div class="result">   
+            <h2>AI Chef Suggestion:</h2>
+            <pre>{{ ai_recipe }}</pre>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
