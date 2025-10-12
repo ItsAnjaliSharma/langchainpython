@@ -8,13 +8,11 @@ from langchain.retrievers import ContextualCompressionRetriever
 # Replace with your LLM chain instance
 
 #load documents
-
 loader = TextLoader("data/notes.txt", encoding="utf-8")
 documents = loader.load()
 
 #split documents
 text_splitter = CharacterTextSplitter(chunk_size=800, chunk_overlap=0)
-
 my_documents = text_splitter.split_documents(documents)
 
 #embeddings
