@@ -1,9 +1,23 @@
-from langchain_huggingface import HuggingFaceHub, HuggingFaceEmbeddings
-from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain, ConversationChain
-from langchain.memory import ChatMessageHistory, ConversationBufferMemory, ConversationBufferWindowMemory, ConversationEntityMemory, ConversationSummaryBufferMemory, VectorStoreRetrieverMemory
+
+# Chains
+from transformers import pipeline
+from langchain.schema import BaseOutputParser
+from langchain_community.chains.conversation.base import ConversationChain
+
+# Memory
+from langchain_community.memory import (
+    ChatMessageHistory,
+    ConversationBufferMemory,
+    ConversationBufferWindowMemory,
+    ConversationEntityMemory,
+    ConversationSummaryBufferMemory,
+    VectorStoreRetrieverMemory,
+)
 from langchain.memory.prompt import ENTITY_MEMORY_CONVERSATION_TEMPLATE
-from langchain
+
+# LLMs / Embeddings
+from langchain_community.llms import HuggingFaceHub
+from langchain_huggingface import HuggingFaceEmbeddings
 
 from operator import itemgetter
 
@@ -11,14 +25,14 @@ embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-
 
 
 # Example 1 ChatMessageHistory
-# history= ChatMessageHistory()
-# history.add_user_message("Hi! How Are You?")
-# history.add_ai_message("Hello, I'm Great. What About You?")
-# history.add_user_message("I'm Fine. Are You Interested In Talk, Right Now?")
-# history.add_ai_message("Yes We Can Talk. Tell me what is in your mind?")
-# print(history)
+history= ChatMessageHistory()
+history.add_user_message("Hi! How Are You?")
+history.add_ai_message("Hello, I'm Great. What About You?")
+history.add_user_message("I'm Fine. Are You Interested In Talk, Right Now?")
+history.add_ai_message("Yes We Can Talk. Tell me what is in your mind?")
+print(history)
 # To See conversation in Array Format 
-# print(history.message)
+print(history.message)
 
 
 # Conversational Buffer Memory  
@@ -66,12 +80,12 @@ embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-
 
 # ConversationSummaryBufferMemory
 
-memory= ConversationSummaryBufferMemory(llm=HuggingFaceHub, max_token_limit=50)
-conversation_with_summary=ConversationChain(llm=HuggingFaceHub, memory=memory, verbose=True)
-conversation_with_summary.predict(input="Why People are Scared of AI")
-conversation_with_summary.predict(input="What will be impact of AI on animals?")
+# memory= ConversationSummaryBufferMemory(llm=HuggingFaceHub, max_token_limit=50)
+# conversation_with_summary=ConversationChain(llm=HuggingFaceHub, memory=memory, verbose=True)
+# conversation_with_summary.predict(input="Why People are Scared of AI")
+# conversation_with_summary.predict(input="What will be impact of AI on animals?")
 
-print(memory.load_memory_variables({}))
+# print(memory.load_memory_variables({}))
 
 
 #Backed By Vector Store

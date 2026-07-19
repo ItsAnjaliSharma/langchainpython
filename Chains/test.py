@@ -1,28 +1,33 @@
-from langchain.llms import HuggingFaceHub
-from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
+from langchain.prompts import PromptTemplate, ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from langchain_huggingface import HuggingFacePipeline
+from transformers import pipeline
 from operator import itemgetter
 
-# Choose a model from Hugging Face Hub (e.g., FLAN-T5)
-#LCEL (Langchain Expression Language)
-#Example 1
-llm = HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":0.7, "max_length":100})
 
-# Prompt template
-prompt = PromptTemplate(
-    input_variables=["topic"],
-    template="Explain the concept of {topic} in simple terms."
+
+# Create the local Hugging Face pipeline
+generator = pipeline(
+    "text2text-generation",
+    model="google/flan-t5-base",
+    max_length=150
 )
 
-# Create the chain
-chain = LLMChain(llm=llm, prompt=prompt)
+# # Wrap it for LangChain (makes it Runnable)
+llm = HuggingFacePipeline(pipeline=generator)
 
-# Run it
-response = chain.run("quantum computing")
-# response = chain.invoke("quantum computing") sometimes it runs this
+# # Define the prompt
+# prompt = PromptTemplate(
+#     input_variables=["topic"],
+#     template="Explain the concept of {topic} in simple terms."
+# )
 
+# # 🔥 New LCEL syntax: combine prompt and model directly
+# chain = prompt | llm
 
-print(response)
+# # Run it
+# response = chain.invoke({"topic": "LlM chains"})
+# print(response)
 
 
 # Example 2 Multiple Chains 
@@ -36,10 +41,10 @@ chat_prompt2= ChatPromptTemplate.from_template(
     "What country is the city {city} in? respond in {language}"
 )
 
-city_chain= chat_prompt1 | chat | StrOutputParser()
+city_chain= chat_prompt1 | llm | StrOutputParser()
 
 country_chain=({"city": city_chain, "language":itemgetter("language")}
-| chat_prompt2 | chat | StrOutputParser()
+| chat_prompt2 | llm | StrOutputParser()
 )
 
 resonse = country_chain.invoke({"person": "Virat Kohli", "language": "English"})
